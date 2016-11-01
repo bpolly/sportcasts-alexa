@@ -1,0 +1,38 @@
+{
+  "intents": [
+    {
+      "intent": "GetGameInfoIntent",
+      "slots": [
+        {
+          "name": "TeamOne",
+          "type": "Team"
+        },
+        {
+          "name": "TeamTwo",
+          "type": "Team"
+        },
+        {
+          "name": "League",
+          "type": "League"
+        },
+        {
+          "name": "Sport",
+          "type": "Sport"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}
