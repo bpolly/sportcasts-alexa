@@ -5,6 +5,20 @@ GetGameInfoIntent what channel the {TeamOne} playing on
 GetGameInfoIntent what channel the {TeamOne} playing on {Date}
 GetGameInfoIntent what channel do the {TeamOne} play on
 GetGameInfoIntent what channel do the {TeamOne} play on {Date}
+GetGameInfoIntent what channel are the {League} {TeamOne} playing on
+GetGameInfoIntent what channel are the {League} {TeamOne} playing on {Date}
+GetGameInfoIntent what channel the {League} {TeamOne} are on
+GetGameInfoIntent what channel the {League} {TeamOne} playing on
+GetGameInfoIntent what channel the {League} {TeamOne} playing on {Date}
+GetGameInfoIntent what channel do the {League} {TeamOne} play on
+GetGameInfoIntent what channel do the {League} {TeamOne} play on {Date}
+GetGameInfoIntent what channel are the {Sport} {TeamOne} playing on
+GetGameInfoIntent what channel are the {Sport} {TeamOne} playing on {Date}
+GetGameInfoIntent what channel the {Sport} {TeamOne} are on
+GetGameInfoIntent what channel the {Sport} {TeamOne} playing on
+GetGameInfoIntent what channel the {Sport} {TeamOne} playing on {Date}
+GetGameInfoIntent what channel do the {Sport} {TeamOne} play on
+GetGameInfoIntent what channel do the {Sport} {TeamOne} play on {Date}
 GetGameInfoIntent what channel is the {TeamOne} {TeamTwo} game on
 GetGameInfoIntent what channel is the {TeamOne} {TeamTwo} game on {Date}
 GetGameInfoIntent which channel are the {TeamOne} on
@@ -14,29 +28,67 @@ GetGameInfoIntent which channel the {TeamOne} playing on
 GetGameInfoIntent which channel the {TeamOne} playing on {Date}
 GetGameInfoIntent which channel do the {TeamOne} play on
 GetGameInfoIntent which channel do the {TeamOne} play on {Date}
+GetGameInfoIntent which channel are the {League} {TeamOne} on
+GetGameInfoIntent which channel are the {League} {TeamOne} playing on
+GetGameInfoIntent which channel are the {League} {TeamOne} playing on {Date}
+GetGameInfoIntent which channel the {League} {TeamOne} playing on
+GetGameInfoIntent which channel the {League} {TeamOne} playing on {Date}
+GetGameInfoIntent which channel do the {League} {TeamOne} play on
+GetGameInfoIntent which channel do the {League} {TeamOne} play on {Date}
+GetGameInfoIntent which channel are the {Sport} {TeamOne} on
+GetGameInfoIntent which channel are the {Sport} {TeamOne} playing on
+GetGameInfoIntent which channel are the {Sport} {TeamOne} playing on {Date}
+GetGameInfoIntent which channel the {Sport} {TeamOne} playing on
+GetGameInfoIntent which channel the {Sport} {TeamOne} playing on {Date}
+GetGameInfoIntent which channel do the {Sport} {TeamOne} play on
+GetGameInfoIntent which channel do the {Sport} {TeamOne} play on {Date}
 GetGameInfoIntent which channel is the {TeamOne} {TeamTwo} game on
 GetGameInfoIntent which channel is the {TeamOne} {TeamTwo} game on {Date}
 GetGameInfoIntent when do the {TeamOne} play
 GetGameInfoIntent when do the {TeamOne} play next
+GetGameInfoIntent when do the {League} {TeamOne} play
+GetGameInfoIntent when do the {League} {TeamOne} play next
+GetGameInfoIntent when do the {Sport} {TeamOne} play
+GetGameInfoIntent when do the {Sport} {TeamOne} play next
 GetGameInfoIntent when do the {TeamOne} play {TeamTwo}
 GetGameInfoIntent when do the {TeamOne} play the {TeamTwo}
 GetGameInfoIntent when do the {TeamOne} play {TeamTwo} next
 GetGameInfoIntent when do the {TeamOne} play the {TeamTwo} next
 GetGameInfoIntent when the {TeamOne} play
 GetGameInfoIntent when the {TeamOne} play next
+GetGameInfoIntent when the {League} {TeamOne} play
+GetGameInfoIntent when the {League} {TeamOne} play next
+GetGameInfoIntent when the {Sport} {TeamOne} play
+GetGameInfoIntent when the {Sport} {TeamOne} play next
 GetGameInfoIntent when the {TeamOne} play {TeamTwo}
 GetGameInfoIntent when the {TeamOne} play the {TeamTwo}
 GetGameInfoIntent when the {TeamOne} play {TeamTwo} next
 GetGameInfoIntent when the {TeamOne} play the {TeamTwo} next
 GetGameInfoIntent what time do the {TeamOne} play
 GetGameInfoIntent what time do the {TeamOne} play {Date}
+GetGameInfoIntent what time do the {League} {TeamOne} play
+GetGameInfoIntent what time do the {League} {TeamOne} play {Date}
+GetGameInfoIntent what time do the {Sport} {TeamOne} play
+GetGameInfoIntent what time do the {Sport} {TeamOne} play {Date}
 GetGameInfoIntent what time do the {TeamOne} play the {TeamTwo} {Date}
 GetGameInfoIntent what time do the {TeamOne} play {TeamTwo} {Date}
 GetGameInfoIntent what time are the {TeamOne} playing
 GetGameInfoIntent what time are the {TeamOne} playing {Date}
+GetGameInfoIntent what time are the {League} {TeamOne} playing
+GetGameInfoIntent what time are the {League} {TeamOne} playing {Date}
+GetGameInfoIntent what time are the {Sport} {TeamOne} playing
+GetGameInfoIntent what time are the {Sport} {TeamOne} playing {Date}
 GetGameInfoIntent what time are the {TeamOne} playing {TeamTwo}
 GetGameInfoIntent what time are the {TeamOne} playing {TeamTwo} {Date}
 GetGameInfoIntent when are the {TeamOne} on
 GetGameInfoIntent when are the {TeamOne} on {Date}
 GetGameInfoIntent when the {TeamOne} are on
 GetGameInfoIntent when the {TeamOne} are on {Date}
+GetGameInfoIntent when are the {League} {TeamOne} on
+GetGameInfoIntent when are the {League} {TeamOne} on {Date}
+GetGameInfoIntent when the {League} {TeamOne} are on
+GetGameInfoIntent when the {League} {TeamOne} are on {Date}
+GetGameInfoIntent when are the {Sport} {TeamOne} on
+GetGameInfoIntent when are the {Sport} {TeamOne} on {Date}
+GetGameInfoIntent when the {Sport} {TeamOne} are on
+GetGameInfoIntent when the {Sport} {TeamOne} are on {Date}
