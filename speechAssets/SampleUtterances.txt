@@ -24,6 +24,8 @@ GetGameInfoIntent what channel is the {TeamOne} {TeamTwo} game on {Date}
 GetGameInfoIntent which channel are the {TeamOne} on
 GetGameInfoIntent which channel are the {TeamOne} playing on
 GetGameInfoIntent which channel are the {TeamOne} playing on {Date}
+GetGameInfoIntent which channel the {TeamOne} are on
+GetGameInfoIntent which channel the {TeamOne} are on {Date}
 GetGameInfoIntent which channel the {TeamOne} playing on
 GetGameInfoIntent which channel the {TeamOne} playing on {Date}
 GetGameInfoIntent which channel do the {TeamOne} play on
@@ -64,6 +66,16 @@ GetGameInfoIntent when the {TeamOne} play {TeamTwo}
 GetGameInfoIntent when the {TeamOne} play the {TeamTwo}
 GetGameInfoIntent when the {TeamOne} play {TeamTwo} next
 GetGameInfoIntent when the {TeamOne} play the {TeamTwo} next
+GetGameInfoIntent what time the {TeamOne} play
+GetGameInfoIntent what time the {TeamOne} play {Date}
+GetGameInfoIntent what time the {League} {TeamOne} play
+GetGameInfoIntent what time the {League} {TeamOne} play {Date}
+GetGameInfoIntent what time the {Sport} {TeamOne} play
+GetGameInfoIntent what time the {Sport} {TeamOne} play {Date}
+GetGameInfoIntent what time the {TeamOne} play the {TeamTwo} {Date}
+GetGameInfoIntent what time the {TeamOne} play {TeamTwo} {Date}
+GetGameInfoIntent what time the {TeamOne} are playing the {TeamTwo} {Date}
+GetGameInfoIntent what time the {TeamOne} are playing {TeamTwo} {Date}
 GetGameInfoIntent what time do the {TeamOne} play
 GetGameInfoIntent what time do the {TeamOne} play {Date}
 GetGameInfoIntent what time do the {League} {TeamOne} play
