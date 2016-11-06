@@ -5,6 +5,8 @@ var SERVER_URL = config.SERVER_URL;
 var SKILL_NAME = 'Sports Broadcasts';
 var request = require('request');
 var dateFormat = require('dateformat');
+var startTime = Date.now();
+var req = require('req-fast');
 
 exports.handler = function(event, context, callback) {
   var alexa = Alexa.handler(event, context);
@@ -15,12 +17,16 @@ exports.handler = function(event, context, callback) {
 
 var handlers = {
     'LaunchRequest': function () {
-        this.emit('GetFact');
+        var speechOutput = "What team or game would you like to know about?";
+        var reprompt = speechOutput;
+        this.emit(':ask', speechOutput, reprompt);
     },
     'GetGameInfoIntent': function () {
         this.emit('GetGameInfo');
     },
     'GetGameInfo': function () {
+        console.log("getGameInfo called: " + (Date.now()-startTime));
+        startTime = Date.now();
         var slots = this.event.request.intent.slots;
 
         var data = {};
@@ -34,13 +40,9 @@ var handlers = {
         console.log(data);
         requestGameInfo(data, this.emit);
     },
-    'handleServerResponse': function (data) {
-
-      this.emit(':tellWithCard', outputString, SKILL_NAME, randomFact)
-    },
     'AMAZON.HelpIntent': function () {
-        var speechOutput = "You can say tell me a space fact, or, you can say exit... What can I help you with?";
-        var reprompt = "What can I help you with?";
+        var speechOutput = "You can say ask me about a team, or a specific game or TV network, or, you can say exit... What can I help you with?";
+        var reprompt = "What team or game would you like to know about?";
         this.emit(':ask', speechOutput, reprompt);
     },
     'AMAZON.CancelIntent': function () {
@@ -52,18 +54,44 @@ var handlers = {
 };
 
 function requestGameInfo(data, emitFunc) {
-  request.post({url:SERVER_URL, formData: data}, function optionalCallback(err, httpResponse, body) {
+  console.log("requestGameInfo called: " + (Date.now()-startTime));
+  startTime = Date.now();
+
+  // request.post({url:SERVER_URL, formData: data}, function optionalCallback(err, httpResponse, body) {
+  //   if (err) {
+  //     return console.error('upload failed:', err);
+  //   }
+  //   console.log("Server responded: " + (Date.now()-startTime));
+  //   startTime = Date.now();
+  //
+  //   console.log('Upload successful!  Server responded with:', body);
+  //   buildOutput(JSON.parse(body), emitFunc);
+  // });
+
+  var options = {
+    url: SERVER_URL,
+    method: "POST",
+    dataType: "form",
+    data: data
+  };
+
+  req(options, function(err, resp){
     if (err) {
       return console.error('upload failed:', err);
     }
-    console.log('Upload successful!  Server responded with:', body);
-    buildOutput(JSON.parse(body), emitFunc);
+    console.log("Req-fast server responded: " + (Date.now()-startTime));
+    startTime = Date.now();
+    console.log('Upload successful!  Server responded with:', resp);
+    buildOutput(JSON.parse(JSON.stringify(resp.body)), emitFunc);
   });
 
 }
 
 
 function buildOutput(games, emitFunc) {
+  console.log("buildOutput called: " + (Date.now()-startTime));
+  startTime = Date.now();
+
   console.log("GAMES: " + games);
 
   // the cavs play the knicks on tnt
@@ -113,6 +141,8 @@ function buildOutput(games, emitFunc) {
   //
   // }
 
+  console.log("buildOutput finished: " + (Date.now()-startTime));
+  startTime = Date.now();
 
   emitFunc(':tell', outputString);
 }
