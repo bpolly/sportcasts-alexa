@@ -104,3 +104,9 @@ GetGameInfoIntent when are the {Sport} {TeamOne} on
 GetGameInfoIntent when are the {Sport} {TeamOne} on {Date}
 GetGameInfoIntent when the {Sport} {TeamOne} are on
 GetGameInfoIntent when the {Sport} {TeamOne} are on {Date}
+GetGameInfoIntent {TeamOne}
+GetGameInfoIntent {TeamOne} vs {TeamTwo}
+GetGameInfoIntent the {TeamOne}
+GetGameInfoIntent the {TeamOne} vs the {TeamTwo}
+GetGameInfoIntent the {TeamOne} game
+GetGameInfoIntent the {TeamOne} vs the {TeamTwo} game
