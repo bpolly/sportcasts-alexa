@@ -3,6 +3,7 @@ var Alexa = require('alexa-sdk');
 var config = require('./config.js')
 var SERVER_URL = config.SERVER_URL;
 var SKILL_NAME = 'Sports Broadcasts';
+var moment = require('moment-timezone');
 var request = require('request');
 var dateFormat = require('dateformat');
 var startTime = Date.now();
@@ -111,15 +112,16 @@ function buildOutput(games, emitFunc) {
     var game_date_est = new Date(game_date.setMinutes(game_date.getMinutes() - 240));
     var date_now = new Date();
     var date_now_est = new Date(date_now.setMinutes(date_now.getMinutes() - 240));
+    var game_time_formatted = calculateTime(original_game_date);
     if (game_date_est.getDate() - date_now_est.getDate() == 0){
-      date = "today at " + dateFormat(game_date_est, "shortTime");
+      date = "today at " + game_time_formatted;
     }
     else if (game_date_est.getDate() - date_now_est.getDate() == 1){
 
-      date = "tomorrow at " + dateFormat(game_date_est, "shortTime");
+      date = "tomorrow at " + game_time_formatted;
     }
     else {
-      date = "on " + dateFormat(game_date_est, "dddd mmmm dS") + " at " + dateFormat(game_date_est, "shortTime");
+      date = "on " + dateFormat(game_date_est, "dddd mmmm dS") + " at " + game_time_formatted;
     }
 
     var home_team = game.home_team.split(" ").slice(-1)[0]
@@ -145,4 +147,9 @@ function buildOutput(games, emitFunc) {
   startTime = Date.now();
 
   emitFunc(':tell', outputString);
+}
+
+function calculateTime(date){
+  // Currently only display in EST
+  return moment(date).tz("UTC").tz("America/New_York").format("h:mm a");
 }
