@@ -107,7 +107,8 @@ function setTimezone(data, emitFunc){
     console.log("Req-fast server responded: " + (Date.now()-startTime));
     startTime = Date.now();
     console.log('Upload successful!  Server responded with:', resp);
-    emitFunc(':tell', "Zip code set to " + data["zip_code"]);
+    var zip_speakable = data["zip_code"].toString().split('').join(' ').replace(/0/g, "oh")
+    emitFunc(':tell', "Zip code set to " + zip_speakable);
   });
 }
 
