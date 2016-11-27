@@ -110,3 +110,13 @@ GetGameInfoIntent the {TeamOne}
 GetGameInfoIntent the {TeamOne} vs the {TeamTwo}
 GetGameInfoIntent the {TeamOne} game
 GetGameInfoIntent the {TeamOne} vs the {TeamTwo} game
+SetZipCodeIntent to set my zip code to {ZipCode}
+SetZipCodeIntent set my zip code to {ZipCode}
+SetZipCodeIntent to set my zip to {ZipCode}
+SetZipCodeIntent set my zip to {ZipCode}
+SetZipCodeIntent to save my zip code as {ZipCode}
+SetZipCodeIntent save my zip code as {ZipCode}
+SetZipCodeIntent to save my zip as {ZipCode}
+SetZipCodeIntent save my zip as {ZipCode}
+SetZipCodeIntent my zip code is {ZipCode}
+SetZipCodeIntent my zip is {ZipCode}
