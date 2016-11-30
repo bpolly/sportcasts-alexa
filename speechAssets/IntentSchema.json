@@ -35,6 +35,9 @@
       ]
     },
     {
+      "intent": "GetZipCodeIntent"
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     },
     {

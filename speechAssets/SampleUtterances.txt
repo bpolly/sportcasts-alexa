@@ -120,3 +120,12 @@ SetZipCodeIntent to save my zip as {ZipCode}
 SetZipCodeIntent save my zip as {ZipCode}
 SetZipCodeIntent my zip code is {ZipCode}
 SetZipCodeIntent my zip is {ZipCode}
+GetZipCodeIntent what is my zip code
+GetZipCodeIntent what's my zip code
+GetZipCodeIntent did i set a zip code
+GetZipCodeIntent which zip code did i save
+GetZipCodeIntent what my zip code is
+AMAZON.StopIntent stop
+AMAZON.StopIntent cancel
+AMAZON.StopIntent nevermind
+AMAZON.StopIntent exit

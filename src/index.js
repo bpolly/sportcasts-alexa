@@ -44,16 +44,21 @@ var handlers = {
     },
     'SetZipCodeIntent': function () {
       var data = {};
-        var slots = this.event.request.intent.slots;
-        var inputtedZip = slots.ZipCode.value;
-        if(inputtedZip){
-          data["amz_id"] = this.event.session.user.userId;
-          data["zip_code"] = inputtedZip.toString();;
-          setTimezone(data, this.emit);
-        }
-        else {
-          this.emit('AMAZON.HelpIntent');
-        }
+      var slots = this.event.request.intent.slots;
+      var inputtedZip = slots.ZipCode.value;
+      if(inputtedZip){
+        data["amz_id"] = this.event.session.user.userId;
+        data["zip_code"] = inputtedZip.toString();;
+        setZipCode(data, this.emit);
+      }
+      else {
+        this.emit('AMAZON.HelpIntent');
+      }
+    },
+    'GetZipCodeIntent': function () {
+      var data = {};
+      data["amz_id"] = this.event.session.user.userId;
+      getZipCode(data, this.emit);
     },
     'AMAZON.HelpIntent': function () {
         var speechOutput = "You can say ask me about a team, or a specific game or TV network, or, you can say exit... What can I help you with?";
@@ -91,7 +96,7 @@ function requestGameInfo(data, emitFunc) {
 
 }
 
-function setTimezone(data, emitFunc){
+function setZipCode(data, emitFunc){
   var options = {
     url: SERVER_URL + "zip_codes",
     method: "POST",
@@ -105,13 +110,35 @@ function setTimezone(data, emitFunc){
       return console.error('upload failed:', err);
     }
     console.log("Req-fast server responded: " + (Date.now()-startTime));
-    startTime = Date.now();
     console.log('Upload successful!  Server responded with:', resp);
     var zip_speakable = data["zip_code"].toString().split('').join(' ').replace(/0/g, "oh")
     emitFunc(':tell', "Zip code set to " + zip_speakable);
   });
 }
 
+function getZipCode(data, emitFunc){
+  var options = {
+    url: SERVER_URL + "retrieve_zip",
+    method: "POST",
+    dataType: "form",
+    data: data
+  };
+
+  req(options, function(err, resp){
+    if (err) {
+      emitFunc(':tell', "Failed to retrieve zip code information");
+      return console.error('upload failed:', err);
+    }
+    console.log('Upload successful!  Server responded with:', resp);
+    if(resp.body["zip_code"].length == 0){
+      emitFunc(':tell', "No saved zip code");
+    }
+    else {
+      var zip_speakable = resp.body["zip_code"].toString().split('').join(' ').replace(/0/g, "oh")
+      emitFunc(':tell', "Your zip code is " + zip_speakable);
+    }
+  });
+}
 
 function buildOutput(games, emitFunc) {
   console.log("buildOutput called: " + (Date.now()-startTime));
