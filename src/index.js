@@ -22,6 +22,9 @@ var handlers = {
         var reprompt = speechOutput;
         this.emit(':ask', speechOutput, reprompt);
     },
+    'SessionEndedRequest': function () {
+      this.emit(':tell', 'Goodbye!');
+    },
     'GetGameInfoIntent': function () {
         this.emit('GetGameInfo');
     },
