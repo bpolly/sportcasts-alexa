@@ -110,3 +110,28 @@ GetGameInfoIntent the {TeamOne}
 GetGameInfoIntent the {TeamOne} vs the {TeamTwo}
 GetGameInfoIntent the {TeamOne} game
 GetGameInfoIntent the {TeamOne} vs the {TeamTwo} game
+SetZipCodeIntent to set my zip code to {ZipCode}
+SetZipCodeIntent set my zip code to {ZipCode}
+SetZipCodeIntent to set my zip code to be {ZipCode}
+SetZipCodeIntent set my zip code to be {ZipCode}
+SetZipCodeIntent to set my zip to {ZipCode}
+SetZipCodeIntent set my zip to {ZipCode}
+SetZipCodeIntent to make my zip code {ZipCode}
+SetZipCodeIntent make my zip code {ZipCode}
+SetZipCodeIntent to make my zip {ZipCode}
+SetZipCodeIntent make my zip {ZipCode}
+SetZipCodeIntent to save my zip code as {ZipCode}
+SetZipCodeIntent save my zip code as {ZipCode}
+SetZipCodeIntent to save my zip as {ZipCode}
+SetZipCodeIntent save my zip as {ZipCode}
+SetZipCodeIntent my zip code is {ZipCode}
+SetZipCodeIntent my zip is {ZipCode}
+GetZipCodeIntent what is my zip code
+GetZipCodeIntent what's my zip code
+GetZipCodeIntent did i set a zip code
+GetZipCodeIntent which zip code did i save
+GetZipCodeIntent what my zip code is
+AMAZON.StopIntent stop
+AMAZON.StopIntent cancel
+AMAZON.StopIntent nevermind
+AMAZON.StopIntent exit

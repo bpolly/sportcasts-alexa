@@ -22,6 +22,9 @@ var handlers = {
         var reprompt = speechOutput;
         this.emit(':ask', speechOutput, reprompt);
     },
+    'SessionEndedRequest': function () {
+      this.emit(':tell', 'Goodbye!');
+    },
     'GetGameInfoIntent': function () {
         this.emit('GetGameInfo');
     },
@@ -37,9 +40,28 @@ var handlers = {
         slots.League.value ? data["league"] = slots.League.value : undefined;
         slots.Sport.value ? data["sport"] = slots.Sport.value : undefined;
         slots.Date.value ? data["date"] = slots.Date.value : undefined;
+        data["amz_id"] = this.event.session.user.userId;
 
         console.log(data);
         requestGameInfo(data, this.emit);
+    },
+    'SetZipCodeIntent': function () {
+      var data = {};
+      var slots = this.event.request.intent.slots;
+      var inputtedZip = slots.ZipCode.value;
+      if(inputtedZip){
+        data["amz_id"] = this.event.session.user.userId;
+        data["zip_code"] = inputtedZip.toString();;
+        setZipCode(data, this.emit);
+      }
+      else {
+        this.emit('AMAZON.HelpIntent');
+      }
+    },
+    'GetZipCodeIntent': function () {
+      var data = {};
+      data["amz_id"] = this.event.session.user.userId;
+      getZipCode(data, this.emit);
     },
     'AMAZON.HelpIntent': function () {
         var speechOutput = "You can say ask me about a team, or a specific game or TV network, or, you can say exit... What can I help you with?";
@@ -58,19 +80,8 @@ function requestGameInfo(data, emitFunc) {
   console.log("requestGameInfo called: " + (Date.now()-startTime));
   startTime = Date.now();
 
-  // request.post({url:SERVER_URL, formData: data}, function optionalCallback(err, httpResponse, body) {
-  //   if (err) {
-  //     return console.error('upload failed:', err);
-  //   }
-  //   console.log("Server responded: " + (Date.now()-startTime));
-  //   startTime = Date.now();
-  //
-  //   console.log('Upload successful!  Server responded with:', body);
-  //   buildOutput(JSON.parse(body), emitFunc);
-  // });
-
   var options = {
-    url: SERVER_URL,
+    url: SERVER_URL + "games",
     method: "POST",
     dataType: "form",
     data: data
@@ -88,6 +99,49 @@ function requestGameInfo(data, emitFunc) {
 
 }
 
+function setZipCode(data, emitFunc){
+  var options = {
+    url: SERVER_URL + "zip_codes",
+    method: "POST",
+    dataType: "form",
+    data: data
+  };
+
+  req(options, function(err, resp){
+    if (err) {
+      emitFunc(':tell', "Zip code failed to save");
+      return console.error('upload failed:', err);
+    }
+    console.log("Req-fast server responded: " + (Date.now()-startTime));
+    console.log('Upload successful!  Server responded with:', resp);
+    var zip_speakable = data["zip_code"].toString().split('').join(' ').replace(/0/g, "oh")
+    emitFunc(':tell', "Zip code set to " + zip_speakable);
+  });
+}
+
+function getZipCode(data, emitFunc){
+  var options = {
+    url: SERVER_URL + "retrieve_zip",
+    method: "POST",
+    dataType: "form",
+    data: data
+  };
+
+  req(options, function(err, resp){
+    if (err) {
+      emitFunc(':tell', "Failed to retrieve zip code information");
+      return console.error('upload failed:', err);
+    }
+    console.log('Upload successful!  Server responded with:', resp);
+    if(resp.body["zip_code"].length == 0){
+      emitFunc(':tell', "No saved zip code");
+    }
+    else {
+      var zip_speakable = resp.body["zip_code"].toString().split('').join(' ').replace(/0/g, "oh")
+      emitFunc(':tell', "Your zip code is " + zip_speakable);
+    }
+  });
+}
 
 function buildOutput(games, emitFunc) {
   console.log("buildOutput called: " + (Date.now()-startTime));
@@ -131,17 +185,6 @@ function buildOutput(games, emitFunc) {
     console.log("---- sup 22 ------");
 
   }
-  // else {
-  //   var i = 0;
-  //   var tvNetworks = "";
-  //   for(i = 0; i < games.length; i++){
-  //     tvNetworks = tvNetworks + ", " + games[i].tv_networks;
-  //     //tvNetworks = arr.slice(0, arr.length - 1).join(', ') + ", and " + arr.slice(-1);
-  //   }
-  //   outputString = tvNetworks;
-  //   console.log("---- sup 3 ------")
-  //
-  // }
 
   console.log("buildOutput finished: " + (Date.now()-startTime));
   startTime = Date.now();
@@ -151,5 +194,5 @@ function buildOutput(games, emitFunc) {
 
 function calculateTime(date){
   // Currently only display in EST
-  return moment(date).tz("UTC").tz("America/New_York").format("h:mm a");
+  return moment(date).tz("UTC").format("h:mm a");
 }

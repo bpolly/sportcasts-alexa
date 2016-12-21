@@ -26,6 +26,18 @@
       ]
     },
     {
+      "intent": "SetZipCodeIntent",
+      "slots": [
+        {
+          "name": "ZipCode",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
+    },
+    {
+      "intent": "GetZipCodeIntent"
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     },
     {
