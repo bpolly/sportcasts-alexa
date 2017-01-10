@@ -73,7 +73,11 @@ var handlers = {
     },
     'AMAZON.StopIntent': function () {
         this.emit(':tell', 'Goodbye!');
-    }
+    },
+    'Unhandled': function () {
+      var speechOutput = "Sorry, I did not get that. Trying asking about a specific team";
+      this.emit(':ask', speechOutput, speechOutput);
+    },
 };
 
 function requestGameInfo(data, emitFunc) {
@@ -193,6 +197,6 @@ function buildOutput(games, emitFunc) {
 }
 
 function calculateTime(date){
-  // Currently only display in EST
+  // use MomentJS to format the time
   return moment(date).tz("UTC").format("h:mm a");
 }
