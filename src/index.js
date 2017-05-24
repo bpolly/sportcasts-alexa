@@ -10,10 +10,13 @@ var startTime = Date.now();
 var req = require('req-fast');
 
 exports.handler = function(event, context, callback) {
+  console.log("exports.handler called");
   var alexa = Alexa.handler(event, context);
   alexa.appId = config.APP_ID;
   alexa.registerHandlers(handlers);
   alexa.execute();
+  console.log("exports.handler call finished");
+
 };
 
 var handlers = {
@@ -182,10 +185,7 @@ function buildOutput(games, emitFunc) {
       date = "on " + dateFormat(game_date_est, "dddd mmmm dS") + " at " + game_time_formatted;
     }
 
-    var home_team = game.home_team.split(" ").slice(-1)[0]
-    var away_team = game.away_team.split(" ").slice(-1)[0]
-
-    outputString = "The " + home_team + " play the " + away_team + " " + date + " on " + tvNetworks;
+    outputString = "The " + game.home_team + " play the " + game.away_team + " " + date + " on " + tvNetworks;
     console.log("---- sup 22 ------");
 
   }
@@ -198,5 +198,7 @@ function buildOutput(games, emitFunc) {
 
 function calculateTime(date){
   // use MomentJS to format the time
+  console.log("Original date: " + date);
+  console.log("Formatted date: " + moment(date).tz("UTC").format("h:mm a"));
   return moment(date).tz("UTC").format("h:mm a");
 }
